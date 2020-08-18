@@ -1,13 +1,11 @@
 const express = require('express');
-const bcrypt = require('bcrypt');
 
 const {
   authRegistration,
   authLogin,
+  authIsAuthenticated,
 } = require('../controllers/authController');
-
-const pool = require('../db/config');
-const generateJwt = require('../utils/auth/generateJwt');
+const authorization = require('../middlewares/authorization');
 
 const router = express.Router();
 
@@ -19,5 +17,7 @@ const router = express.Router();
 router.post('/register', authRegistration);
 
 router.post('/login', authLogin);
+
+router.get('/is-authenticated', authorization, authIsAuthenticated);
 
 module.exports = router;

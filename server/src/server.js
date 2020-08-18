@@ -1,5 +1,6 @@
 const express = require('express');
 const cors = require('cors');
+const helmet = require('helmet');
 
 const authRoutes = require('./routes/authRoutes');
 const userRoutes = require('./routes/userRoutes');
@@ -10,6 +11,7 @@ const app = express();
 
 const PORT = 5000 || process.env.PORT;
 
+app.use(helmet());
 app.use(express.json());
 app.use(cors());
 

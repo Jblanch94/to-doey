@@ -100,4 +100,12 @@ const authLogin = async (req, res) => {
   }
 };
 
-module.exports = { authRegistration, authLogin };
+const authIsAuthenticated = (req, res) => {
+  if (!req.user) {
+    return res.status(403).send('Not Authenticated');
+  }
+
+  res.json({ authenticated: true });
+};
+
+module.exports = { authRegistration, authLogin, authIsAuthenticated };

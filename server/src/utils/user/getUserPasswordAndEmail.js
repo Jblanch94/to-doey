@@ -1,6 +1,6 @@
 const pool = require('../../db/config');
 
-module.exports = async function (email) {
+module.exports = async (email) => {
   const query =
     'SELECT user_email, user_password FROM users WHERE user_email = $1';
   try {
