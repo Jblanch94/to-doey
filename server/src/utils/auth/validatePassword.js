@@ -11,7 +11,6 @@ module.exports = function (password) {
     if (password[i] == password[i].toUpperCase()) {
       upperCaseCount++;
     }
-    console.log(upperCaseCount);
   }
 
   if (upperCaseCount < 1) {
@@ -21,7 +20,6 @@ module.exports = function (password) {
   //contains at least one special character
   const regexSymbols = /[-!$%^&*()_+|~=`{}\[\]:\/;<>?,.@#]/;
   const containsSpecialChar = regexSymbols.test(password);
-  console.log(containsSpecialChar);
   if (!containsSpecialChar) {
     return false;
   }

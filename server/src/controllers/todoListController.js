@@ -1,6 +1,6 @@
-const createList = require('../utils/lists/createList');
-const getAllLists = require('../utils/lists/getAllLists');
-const updateList = require('../utils/lists/updateList');
+const createList = require("../utils/lists/createList");
+const getAllLists = require("../utils/lists/getAllLists");
+const updateList = require("../utils/lists/updateList");
 
 const createNewList = async (req, res) => {
   //destructure request body for name of the list and user id from req.user
@@ -9,11 +9,11 @@ const createNewList = async (req, res) => {
 
   //send error if missing any information
   if (!listName) {
-    return res.status(400).send('Missing list information');
+    return res.status(400).send("Missing list information");
   }
 
   if (!userId) {
-    return res.status(403).send('Authorization error');
+    return res.status(403).send("Authorization error");
   }
 
   try {
@@ -26,7 +26,7 @@ const createNewList = async (req, res) => {
     res.status(201).json(data);
   } catch (err) {
     console.error(err.message);
-    res.status(500).send('Server Error');
+    res.status(500).send("Server Error");
   }
 };
 
@@ -35,7 +35,7 @@ const fetchLists = async (req, res) => {
   const { userId } = req.user;
 
   if (!userId) {
-    res.status(403).json('Authorization Error');
+    res.status(403).json("Authorization Error");
   }
 
   //query database to get list(s) for the autorized user
@@ -46,16 +46,16 @@ const fetchLists = async (req, res) => {
     res.json(lists.rows);
   } catch (err) {
     console.error(err.message);
-    return res.status(500).send('Server Error');
+    return res.status(500).send("Server Error");
   }
 };
 
-const updateList = async (req, res) => {
+const updateTodoList = async (req, res) => {
   const { id } = req.params;
   const { listName } = req.body;
 
   if (!listName) {
-    return res.send('Missing Information.');
+    return res.send("Missing Information.");
   }
 
   try {
@@ -64,12 +64,12 @@ const updateList = async (req, res) => {
     res.json(data);
   } catch (err) {
     console.error(err.message);
-    res.status(500).send('Server Error');
+    res.status(500).send("Server Error");
   }
 };
 
 module.exports = {
   createNewList,
   fetchLists,
-  updateList,
+  updateTodoList,
 };
