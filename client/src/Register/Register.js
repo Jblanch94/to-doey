@@ -33,6 +33,11 @@ const Register = (props) => {
     <Fragment>
       <section className="background-container">
         <div className="container-sm mt-5 register-container">
+          {props.auth.error && (
+            <div className="mt-3  text-center">
+              <h1 className="text-bold text-danger">{props.auth.error.data}</h1>
+            </div>
+          )}
           <h1 className="title mt-5">Register</h1>
           <form onSubmit={props.handleSubmit(onSubmit)}>
             <div className="form-group form-group-lg mx-5">
@@ -121,6 +126,12 @@ const validate = (formValues) => {
   return errors;
 };
 
+const mapStateToProps = (state) => {
+  return {
+    auth: state.auth,
+  };
+};
+
 const formWrapper = reduxForm({ form: "register", validate })(Register);
 
-export default connect(null, { registerUser })(formWrapper);
+export default connect(mapStateToProps, { registerUser })(formWrapper);

@@ -2,7 +2,7 @@ import React, { Fragment } from "react";
 import { Switch, BrowserRouter as Router, Route } from "react-router-dom";
 import { connect } from "react-redux";
 
-import Navbar from "./ui-components/Navbar";
+import Navbar from "./ui-components/Navbar/Navbar";
 import Register from "./Register/Register";
 import Login from "./Login/Login";
 import Dashboard from "./Dashboard/Dashboard";
@@ -24,7 +24,7 @@ const App = (props) => {
             render={(routeProps) => <Login {...routeProps} />}
           />
           <Route
-            path="/dashboard"
+            path="/"
             render={(routeProps) => <Dashboard {...routeProps} />}
           />
         </Switch>
