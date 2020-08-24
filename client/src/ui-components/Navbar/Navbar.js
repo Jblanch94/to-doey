@@ -15,7 +15,7 @@ const Navbar = (props) => {
   }
 
   return !props.auth.isAuthenticated ? (
-    <header>
+    <header className="header">
       <nav className="navbar navbar-expand-lg  justify-content-between background">
         <Link className="navbar-brand brand-text" to="/">
           Todoey

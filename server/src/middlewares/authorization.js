@@ -8,6 +8,7 @@ module.exports = async function (req, res, next) {
 
   //get jwt from the bearer header
   const token = bearerToken.split(' ')[1];
+  console.log('token', token);
 
   //if no token is found then send unauthorized user
   if (!token) {
@@ -16,7 +17,7 @@ module.exports = async function (req, res, next) {
 
   //decode the jwt to get the user id from the token
   try {
-    const decoded = await jwt.verify(token, process.env.JWT_SECRET_KEY);
+    const decoded = jwt.verify(token, process.env.JWT_SECRET_KEY);
     req.user = decoded;
   } catch (err) {
     console.error(err.message);

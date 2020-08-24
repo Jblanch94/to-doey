@@ -36,3 +36,7 @@ a:hover {
   background: #40916c;
   color: #fff;
 }
+
+.header {
+  z-index: 1;
+}

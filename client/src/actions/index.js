@@ -4,8 +4,11 @@ import {
   AUTH_ERROR,
   IS_AUTHENTICATED,
   LOGOUT,
+  FETCH_LISTS,
+  EDIT_LIST_NAME,
 } from './types';
 import axiosAuth from '../axios/axiosAuth';
+import axiosList from '../axios/axiosList';
 
 export const registerUser = (formValues) => {
   return async (dispatch) => {
@@ -70,5 +73,33 @@ export const logout = () => {
   //return object with designated type
   return {
     type: LOGOUT,
+  };
+};
+
+export const fetchLists = () => {
+  return async (dispatch) => {
+    try {
+      const response = await axiosList.get('/', {
+        headers: {
+          Authorization: 'Bearer ' + sessionStorage.getItem('token'),
+        },
+      });
+
+      const data = response.data;
+
+      return dispatch({
+        type: FETCH_LISTS,
+        payload: data,
+      });
+    } catch (err) {
+      console.error(err.message);
+    }
+  };
+};
+
+export const addList = (name) => {
+  return async (dispatch) => {
+    try {
+    } catch (error) {}
   };
 };
