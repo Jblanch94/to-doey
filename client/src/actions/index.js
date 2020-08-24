@@ -1,14 +1,20 @@
-import { REGISTER_USER, LOGIN_USER, AUTH_ERROR } from "./types";
-import axiosAuth from "../axios/axiosAuth";
+import {
+  REGISTER_USER,
+  LOGIN_USER,
+  AUTH_ERROR,
+  IS_AUTHENTICATED,
+  LOGOUT,
+} from './types';
+import axiosAuth from '../axios/axiosAuth';
 
 export const registerUser = (formValues) => {
   return async (dispatch) => {
     try {
-      const response = await axiosAuth.post("/register", formValues);
+      const response = await axiosAuth.post('/register', formValues);
       const data = response.data;
 
       //set the token in session storage
-      sessionStorage.setItem("token", data.token);
+      sessionStorage.setItem('token', data.token);
       return dispatch({
         type: REGISTER_USER,
         payload: data,
@@ -25,10 +31,10 @@ export const registerUser = (formValues) => {
 export const loginUser = (formValues) => {
   return async (dispatch) => {
     try {
-      const response = await axiosAuth.post("/login", formValues);
+      const response = await axiosAuth.post('/login', formValues);
 
       //set token in session storage
-      sessionStorage.setItem("token", response.data.token);
+      sessionStorage.setItem('token', response.data.token);
       return dispatch({
         type: LOGIN_USER,
         payload: response.data,
@@ -39,5 +45,30 @@ export const loginUser = (formValues) => {
         payload: err.response,
       });
     }
+  };
+};
+
+export const checkAuthStatus = () => {
+  return async (dispatch) => {
+    try {
+      const response = await axiosAuth.get('/is-authenticated', {
+        headers: {
+          Authorization: 'Bearer ' + sessionStorage.getItem('token'),
+        },
+      });
+      return dispatch({
+        type: IS_AUTHENTICATED,
+        payload: response.data,
+      });
+    } catch (err) {
+      console.error(err.message);
+    }
+  };
+};
+
+export const logout = () => {
+  //return object with designated type
+  return {
+    type: LOGOUT,
   };
 };

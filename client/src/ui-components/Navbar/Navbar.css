@@ -8,6 +8,31 @@ a:hover {
   color: #40916c;
 }
 
+.brand-text {
+  font-size: 2rem;
+}
+
+.link-text {
+  font-size: 2rem;
+}
+
 .background {
   background: #74c69d;
+}
+
+.name {
+  color: #fff;
+  font-size: 2rem;
+  line-height: 2.7rem;
+}
+
+.button-logout {
+  background: #fff;
+  color: #2c9057;
+  font-weight: bold;
+}
+
+.button-logout:hover {
+  background: #40916c;
+  color: #fff;
 }

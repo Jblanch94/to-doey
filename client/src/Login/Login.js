@@ -1,12 +1,11 @@
-import React, { Fragment } from "react";
-import { reduxForm, Field } from "redux-form";
-import { connect } from "react-redux";
+import React, { Fragment } from 'react';
+import { reduxForm, Field } from 'redux-form';
+import { connect } from 'react-redux';
 
-import { loginUser } from "../actions";
-import "./Login.css";
+import { loginUser } from '../actions';
+import './Login.css';
 
 const Login = (props) => {
-  console.log(props.auth);
   function renderInput({ input, meta, placeholder, id, type }) {
     return (
       <Fragment>
@@ -45,9 +44,9 @@ const Login = (props) => {
                 component={renderInput}
                 name="email"
                 props={{
-                  id: "email",
-                  placeholder: "Enter email...",
-                  type: "email",
+                  id: 'email',
+                  placeholder: 'Enter email...',
+                  type: 'email',
                 }}
               />
             </div>
@@ -57,9 +56,9 @@ const Login = (props) => {
                 component={renderInput}
                 name="password"
                 props={{
-                  id: "password",
-                  type: "password",
-                  placeholder: "Enter password...",
+                  id: 'password',
+                  type: 'password',
+                  placeholder: 'Enter password...',
                 }}
               />
             </div>
@@ -78,11 +77,11 @@ const Login = (props) => {
 const validate = (values) => {
   const errors = {};
   if (!values.email) {
-    errors.email = "Email required!";
+    errors.email = 'Email required!';
   }
 
   if (!values.password) {
-    errors.password = "Password required!";
+    errors.password = 'Password required!';
   }
   return errors;
 };
@@ -93,6 +92,6 @@ const mapStateToProps = (state) => {
   };
 };
 
-const formWrapper = reduxForm({ form: "login", validate })(Login);
+const formWrapper = reduxForm({ form: 'login', validate })(Login);
 
 export default connect(mapStateToProps, { loginUser })(formWrapper);

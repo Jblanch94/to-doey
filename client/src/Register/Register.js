@@ -1,10 +1,10 @@
-import React, { Fragment } from "react";
-import { reduxForm, Field } from "redux-form";
-import { connect } from "react-redux";
+import React, { Fragment } from 'react';
+import { reduxForm, Field } from 'redux-form';
+import { connect } from 'react-redux';
 
-import { registerUser } from "../actions";
+import { registerUser } from '../actions';
 
-import "./Register.css";
+import './Register.css';
 
 const Register = (props) => {
   function renderInput({ input, type, placeholder, id, meta }) {
@@ -46,9 +46,9 @@ const Register = (props) => {
                 name="email"
                 component={renderInput}
                 props={{
-                  id: "email",
-                  type: "email",
-                  placeholder: "Enter email...",
+                  id: 'email',
+                  type: 'email',
+                  placeholder: 'Enter email...',
                 }}
               />
             </div>
@@ -59,9 +59,9 @@ const Register = (props) => {
                 name="name"
                 component={renderInput}
                 props={{
-                  id: "name",
-                  type: "text",
-                  placeholder: "Enter name...",
+                  id: 'name',
+                  type: 'text',
+                  placeholder: 'Enter name...',
                 }}
               />
             </div>
@@ -71,9 +71,9 @@ const Register = (props) => {
                 name="password"
                 component={renderInput}
                 props={{
-                  id: "password",
-                  type: "password",
-                  placeholder: "Enter password...",
+                  id: 'password',
+                  type: 'password',
+                  placeholder: 'Enter password...',
                 }}
               />
             </div>
@@ -86,7 +86,7 @@ const Register = (props) => {
               </button>
             </div>
             <div className=" font-italic">
-              <p style={{ color: "#2C9057 " }} className="text-center">
+              <p style={{ color: '#2C9057 ' }} className="text-center">
                 * Password must be at least 8 characters long. It must contain
                 at least one special character, one number, one uppercase and
                 lowercase letter.
@@ -106,21 +106,21 @@ const validate = (formValues) => {
 
   //validation for email field
   if (!formValues.email) {
-    errors.email = "Email is required!";
+    errors.email = 'Email is required!';
   } else if (!emailRegex.test(formValues.email)) {
-    errors.email = "Invalid email!";
+    errors.email = 'Invalid email!';
   }
 
   //validation for name field
   if (!formValues.name) {
-    errors.name = "Name is required!";
+    errors.name = 'Name is required!';
   } else if (formValues.name.length < 5) {
-    errors.name = "Name is too short!";
+    errors.name = 'Name is too short!';
   }
 
   //validation for password field
   if (!passwordRegex.test(formValues.password)) {
-    errors.password = "Invalid password!";
+    errors.password = 'Invalid password!';
   }
 
   return errors;
@@ -132,6 +132,6 @@ const mapStateToProps = (state) => {
   };
 };
 
-const formWrapper = reduxForm({ form: "register", validate })(Register);
+const formWrapper = reduxForm({ form: 'register', validate })(Register);
 
 export default connect(mapStateToProps, { registerUser })(formWrapper);

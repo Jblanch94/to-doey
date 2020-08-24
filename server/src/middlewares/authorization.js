@@ -20,7 +20,6 @@ module.exports = async function (req, res, next) {
     req.user = decoded;
   } catch (err) {
     console.error(err.message);
-    return res.status(500).send('Server Error');
   }
   next();
 };
