@@ -13,6 +13,7 @@ import Navbar from './ui-components/Navbar/Navbar';
 import Register from './Register/Register';
 import Login from './Login/Login';
 import Dashboard from './Dashboard/Dashboard';
+import ListContent from './List/ListContent';
 
 import './App.css';
 
@@ -48,9 +49,21 @@ const App = ({ auth, checkAuthStatus }) => {
           />
           <Route
             path="/"
+            exact
             render={(routeProps) =>
               isAuthenticated ? (
                 <Dashboard {...routeProps} />
+              ) : (
+                <Redirect to="/login" />
+              )
+            }
+          />
+          <Route
+            path="/:id"
+            exact
+            render={(routeProps) =>
+              isAuthenticated ? (
+                <ListContent {...routeProps} />
               ) : (
                 <Redirect to="/login" />
               )

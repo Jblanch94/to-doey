@@ -2,19 +2,22 @@ import React, { Fragment, useEffect } from 'react';
 import { connect } from 'react-redux';
 
 import { fetchLists } from '../actions';
-import './Dashboard.css';
+import './ListContent.css';
 
 import Sidebar from '../ui-components/Sidebar/Sidebar';
 
-const Dashboard = ({ fetchLists, lists }) => {
+const ListContent = ({ fetchLists, lists }) => {
   useEffect(() => {
     fetchLists();
   }, [fetchLists]);
+
   return (
     <Fragment>
-      <section id="dashboard">
-        <Sidebar lists={lists} />
-      </section>
+      <Sidebar lists={lists} />
+
+      <div className="list-content">
+        <h1>Content</h1>
+      </div>
     </Fragment>
   );
 };
@@ -25,4 +28,4 @@ const mapStateToProps = (state) => {
   };
 };
 
-export default connect(mapStateToProps, { fetchLists })(Dashboard);
+export default connect(mapStateToProps, { fetchLists })(ListContent);
