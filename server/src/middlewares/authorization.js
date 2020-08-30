@@ -5,10 +5,11 @@ dotenv.config({ path: 'server / src / config / config.env' });
 module.exports = async function (req, res, next) {
   //get token from the header
   const bearerToken = req.headers['authorization'];
+  console.log('headers', req.headers);
+  console.log('token', bearerToken);
 
   //get jwt from the bearer header
   const token = bearerToken.split(' ')[1];
-  console.log('token', token);
 
   //if no token is found then send unauthorized user
   if (!token) {

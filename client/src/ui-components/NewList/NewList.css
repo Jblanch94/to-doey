@@ -1,0 +1,20 @@
+.new-list__container {
+  display: flex;
+  padding-top: 1rem;
+}
+
+.new-list__container i {
+  line-height: 1.8;
+  padding-left: 0.75rem;
+}
+
+.new-list__container input {
+  margin-left: 0.7rem;
+  right: 0.3rem;
+  width: 80%;
+  flex: 1;
+}
+
+.btn-check {
+  display: none;
+}

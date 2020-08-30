@@ -5,7 +5,7 @@ import {
   IS_AUTHENTICATED,
   LOGOUT,
   FETCH_LISTS,
-  EDIT_LIST_NAME,
+  ADD_LIST,
 } from './types';
 import axiosAuth from '../axios/axiosAuth';
 import axiosList from '../axios/axiosList';
@@ -100,6 +100,20 @@ export const fetchLists = () => {
 export const addList = (name) => {
   return async (dispatch) => {
     try {
-    } catch (error) {}
+      const response = await axiosList.post('/', name, {
+        headers: {
+          Authorization: 'Bearer ' + sessionStorage.getItem('token'),
+        },
+      });
+
+      const data = response.data;
+
+      return dispatch({
+        type: FETCH_LISTS,
+        payload: data,
+      });
+    } catch (error) {
+      console.error(error.message);
+    }
   };
 };

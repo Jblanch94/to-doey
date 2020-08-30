@@ -1,10 +1,9 @@
-import { FETCH_LISTS } from '../actions/types';
+import { FETCH_LISTS, ADD_LIST } from '../actions/types';
 
 export default (state = [], action) => {
   switch (action.type) {
     case FETCH_LISTS:
-      return action.payload;
-
+      return [].concat(state, action.payload);
     default:
       return state;
   }
