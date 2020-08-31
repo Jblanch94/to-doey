@@ -13,7 +13,7 @@ import Navbar from './ui-components/Navbar/Navbar';
 import Register from './Register/Register';
 import Login from './Login/Login';
 import Dashboard from './Dashboard/Dashboard';
-import ListContent from './List/ListContent';
+import ListContent from './List/ListContent/ListContent';
 
 import './App.css';
 

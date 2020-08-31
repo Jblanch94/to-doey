@@ -5,10 +5,11 @@ import {
   IS_AUTHENTICATED,
   LOGOUT,
   FETCH_LISTS,
-  ADD_LIST,
+  FETCH_TODOS,
 } from './types';
 import axiosAuth from '../axios/axiosAuth';
 import axiosList from '../axios/axiosList';
+import axiosTodoItems from '../axios/axiosTodoItems';
 
 export const registerUser = (formValues) => {
   return async (dispatch) => {
@@ -114,6 +115,26 @@ export const addList = (name) => {
       });
     } catch (error) {
       console.error(error.message);
+    }
+  };
+};
+
+export const fetchTodos = (id) => {
+  return async (dispatch) => {
+    try {
+      const response = await axiosTodoItems.get(`/${id}`, {
+        headers: {
+          Authorization: 'Bearer ' + sessionStorage.getItem('token'),
+        },
+      });
+
+      const data = response.data;
+      return dispatch({
+        type: FETCH_TODOS,
+        payload: data,
+      });
+    } catch (err) {
+      console.error(err.message);
     }
   };
 };

@@ -1,0 +1,30 @@
+.todo-list {
+  list-style: none;
+}
+
+.list-title-container {
+  margin-top: 2rem;
+  margin-left: 1rem;
+}
+
+.todo-item {
+  padding: 1rem 0;
+}
+
+.todo-item-complete {
+  text-decoration: line-through;
+}
+
+.hr-line {
+  margin-left: 0;
+  text-align: left;
+}
+
+.check-icon {
+  margin-top: 1.3rem;
+  margin-right: 2rem;
+}
+
+.check-icon:hover {
+  cursor: pointer;
+}

@@ -1,6 +1,23 @@
 const addTodo = require('../utils/todos/addTodo');
 const removeTodo = require('../utils/todos/removeTodo');
+const getTodos = require('../utils/todos/getTodos');
 const pool = require('../db/config');
+
+const fetchTodos = async (req, res) => {
+  const { id } = req.params;
+
+  try {
+    //get all the todos
+    const todos = await getTodos(id);
+
+    //send back data
+
+    res.json(todos.rows);
+  } catch (err) {
+    console.error(err.message);
+    res.status(500).send('Server Error');
+  }
+};
 
 const addNewTodo = async (req, res) => {
   //destructure body for description, completed from request body and list id from params
@@ -90,6 +107,7 @@ const updateTodo = async (req, res) => {
 };
 
 module.exports = {
+  fetchTodos,
   addNewTodo,
   deleteTodo,
   updateTodo,

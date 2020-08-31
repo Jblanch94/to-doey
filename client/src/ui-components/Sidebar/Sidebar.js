@@ -2,7 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 
 import './Sidebar.css';
-import NewList from '../NewList/NewList';
+import NewList from '../../List/NewList/NewList';
 
 const Sidebar = ({ lists }) => {
   function renderLists() {
