@@ -1,23 +1,38 @@
 import React, { Fragment, useState } from 'react';
+import { connect } from 'react-redux';
+import { updateTodoData } from '../../actions';
 
 import './Todos.css';
+import EditTodo from '../EditTodo/EditTodo';
+import TodoInput from '../TodoInput/TodoInput';
 
-const Todo = ({ todos, lists, id }) => {
-  const [completed, setCompleted] = useState(false);
-
+const Todo = ({ todos, lists, id, updateTodoData }) => {
   const renderTodos = () => {
     return todos.map((todo, index) => {
       return (
         <Fragment key={index}>
           <div className="d-flex">
             <i
-              className="far fa-check-circle check-icon"
-              id="icon-check"
-              onClick={() => onClickComplete(todo.todo_id)}
+              className={
+                todo.completed
+                  ? 'far fa-check-circle check-icon-completed fa-2x'
+                  : 'far fa-check-circle check-icon-not-completed fa-2x'
+              }
+              onClick={() =>
+                onClickComplete(parseInt(id), todo.todo_id, !todo.completed)
+              }
             ></i>
-            <li key={todo.todo_id} className="todo-item" id={todo.todo_id}>
-              {todo.todo_description}
+            <li key={todo.todo_id} id={todo.todo_id}>
+              <TodoInput
+                completed={todo.completed}
+                todoId={todo.todo_id}
+                listId={parseInt(id)}
+                description={todo.todo_description}
+              />
             </li>
+            <div className="edit-icon-container">
+              <EditTodo id={todo.todo_id} />
+            </div>
           </div>
           <hr className="hr-line"></hr>
         </Fragment>
@@ -31,17 +46,8 @@ const Todo = ({ todos, lists, id }) => {
     return list.todo_list_name;
   };
 
-  const onClickComplete = (id) => {
-    const todo = document.getElementById(id);
-    setCompleted(!completed);
-
-    if (completed) {
-      todo.classList.add('todo-item-complete');
-    } else {
-      todo.classList.remove('todo-item-complete');
-    }
-
-    //TODO: make api request to change completed status
+  const onClickComplete = (listId, todoId, completed) => {
+    updateTodoData(listId, todoId, { completed });
   };
 
   return (
@@ -56,4 +62,4 @@ const Todo = ({ todos, lists, id }) => {
   );
 };
 
-export default Todo;
+export default connect(null, { updateTodoData })(Todo);

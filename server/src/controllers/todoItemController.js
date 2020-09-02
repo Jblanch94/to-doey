@@ -66,6 +66,8 @@ const updateTodo = async (req, res) => {
   const { listId, todoId } = req.params;
   const { description, completed } = req.body;
 
+  console.log(completed);
+
   if (description === undefined && completed === undefined) {
     return res.send('No update values provided.');
   }
@@ -88,13 +90,13 @@ const updateTodo = async (req, res) => {
 
     if (description !== undefined && completed === undefined) {
       query =
-        'UPDATE todos td SET todo_description = $1 FROM todo_lists tdl WHERE td.todo_id = $2 AND tdl.todo_list_id = $4 RETURNING *';
+        'UPDATE todos td SET todo_description = $1 FROM todo_lists tdl WHERE td.todo_id = $2 AND tdl.todo_list_id = $3 RETURNING *';
       updatedTodo = await pool.query(query, [description, todoId, listId]);
     }
 
     if (description === undefined && completed !== undefined) {
       query =
-        'UPDATE todos td SET completed = $1 FROM todo_lists tdl WHERE td.todo_id = $2 AND  tdl.todo_list_id = $4 RETURNING *';
+        'UPDATE todos td SET completed = $1 FROM todo_lists tdl WHERE td.todo_id = $2 AND  tdl.todo_list_id = $3 RETURNING *';
       updatedTodo = await pool.query(query, [completed, todoId, listId]);
     }
 

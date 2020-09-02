@@ -1,0 +1,11 @@
+.todo-item-complete {
+  text-decoration: line-through;
+}
+
+.input-todo {
+  border: none;
+}
+
+.input-todo:focus {
+  outline: none;
+}

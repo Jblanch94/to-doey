@@ -7,24 +7,31 @@
   margin-left: 1rem;
 }
 
-.todo-item {
-  padding: 1rem 0;
-}
-
-.todo-item-complete {
-  text-decoration: line-through;
-}
-
 .hr-line {
   margin-left: 0;
   text-align: left;
 }
 
-.check-icon {
+.check-icon-completed {
   margin-top: 1.3rem;
   margin-right: 2rem;
+  color: red;
 }
 
-.check-icon:hover {
+.check-icon-not-completed {
+  margin-top: 1.3rem;
+  margin-right: 2rem;
+  color: green;
+}
+
+.check-icon-completed:hover,
+.check-icon-not-completed:hover {
   cursor: pointer;
+}
+
+.edit-icon-container {
+  width: 100%;
+  display: flex;
+  justify-content: flex-end;
+  padding-right: 10rem;
 }

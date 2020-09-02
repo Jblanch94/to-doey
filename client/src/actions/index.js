@@ -6,6 +6,7 @@ import {
   LOGOUT,
   FETCH_LISTS,
   FETCH_TODOS,
+  UPDATE_TODO,
 } from './types';
 import axiosAuth from '../axios/axiosAuth';
 import axiosList from '../axios/axiosList';
@@ -132,6 +133,32 @@ export const fetchTodos = (id) => {
       return dispatch({
         type: FETCH_TODOS,
         payload: data,
+      });
+    } catch (err) {
+      console.error(err.message);
+    }
+  };
+};
+
+export const updateTodoData = (listId, todoId, data) => {
+  return async (dispatch) => {
+    try {
+      const response = await axiosTodoItems.patch(
+        `/${listId}/${todoId}`,
+        data,
+        {
+          headers: {
+            Authorization: 'Bearer ' + sessionStorage.getItem('token'),
+          },
+        }
+      );
+
+      console.log(data);
+      console.log(response.data);
+
+      return dispatch({
+        type: UPDATE_TODO,
+        payload: response.data,
       });
     } catch (err) {
       console.error(err.message);
