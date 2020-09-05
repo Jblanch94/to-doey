@@ -27,6 +27,9 @@ const Navbar = (props) => {
           <Link className="nav-link link-text" to="/login">
             Login
           </Link>
+          <Link className="nav-link link-text" to="/register">
+            Register
+          </Link>
         </div>
       </nav>
     </header>
