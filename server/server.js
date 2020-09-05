@@ -12,7 +12,16 @@ const app = express();
 
 const PORT = process.env.PORT || 5000;
 
-app.use(helmet());
+app.use(
+  helmet.contentSecurityPolicy({
+    directives: {
+      defaultSrc: ["'self'"],
+      scriptSrc: ["'self'", 'example.com'],
+      objectSrc: ["'none'"],
+      upgradeInsecureRequests: [],
+    },
+  })
+);
 app.use(express.json());
 // app.use(cors());
 
