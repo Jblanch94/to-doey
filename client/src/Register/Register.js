@@ -6,24 +6,24 @@ import { registerUser } from '../actions';
 
 import './Register.css';
 
-const Register = (props) => {
-  function renderInput({ input, type, placeholder, id, meta }) {
-    return (
-      <Fragment>
-        <input
-          {...input}
-          type={type}
-          className="form-control  input-rounded center input-bg"
-          placeholder={placeholder}
-          id={id}
-        />
-        {meta.touched && meta.error && (
-          <span className="text-danger">{meta.error}</span>
-        )}
-      </Fragment>
-    );
-  }
+function renderInput({ input, type, placeholder, id, meta }) {
+  return (
+    <Fragment>
+      <input
+        {...input}
+        type={type}
+        className="form-control  input-rounded center input-bg"
+        placeholder={placeholder}
+        id={id}
+      />
+      {meta.touched && meta.error && (
+        <span className="text-danger">{meta.error}</span>
+      )}
+    </Fragment>
+  );
+}
 
+const Register = (props) => {
   //call action to register user and authentication
   function onSubmit(values) {
     props.registerUser(values);
