@@ -1,6 +1,9 @@
 const jwt = require('jsonwebtoken');
 const dotenv = require('dotenv');
-dotenv.config({ path: 'server / src / config / config.env' });
+
+if (process.env.NODE_ENV === 'undefined') {
+  dotenv.config({ path: 'server / src / config / config.env' });
+}
 
 module.exports = async function (req, res, next) {
   //get token from the header
