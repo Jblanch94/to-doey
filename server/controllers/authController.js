@@ -53,6 +53,7 @@ const authRegistration = async (req, res) => {
 
     //send token back to user
     const token = generateJwt(data.user_id);
+    console.log(token);
 
     res.status(201).json({ token });
   } catch (err) {
@@ -90,6 +91,7 @@ const authLogin = async (req, res) => {
 
     //generate jwt token for user since credentials match
     const token = generateJwt(user.rows[0].user_id);
+    console.log(token);
     res.json({ token });
   } catch (err) {
     console.error(err.message);
