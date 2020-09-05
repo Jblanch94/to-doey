@@ -5,24 +5,24 @@ import { connect } from 'react-redux';
 import { loginUser } from '../actions';
 import './Login.css';
 
-const Login = (props) => {
-  function renderInput({ input, meta, placeholder, id, type }) {
-    return (
-      <Fragment>
-        <input
-          {...input}
-          placeholder={placeholder}
-          type={type}
-          id={id}
-          className="form-control input-rounded input-bg"
-        />
-        {meta.touched && meta.error && (
-          <span className="text-danger">{meta.error}</span>
-        )}
-      </Fragment>
-    );
-  }
+function renderInput({ input, meta, placeholder, id, type }) {
+  return (
+    <Fragment>
+      <input
+        {...input}
+        placeholder={placeholder}
+        type={type}
+        id={id}
+        className="form-control input-rounded input-bg"
+      />
+      {meta.touched && meta.error && (
+        <span className="text-danger">{meta.error}</span>
+      )}
+    </Fragment>
+  );
+}
 
+const Login = (props) => {
   function onSubmitForm(formValues) {
     props.loginUser(formValues);
   }
