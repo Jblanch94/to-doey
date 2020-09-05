@@ -7,3 +7,4 @@ export const FETCH_LISTS = 'fetch_lists';
 export const ADD_LIST = 'add_list';
 export const FETCH_TODOS = 'fetch_todos';
 export const UPDATE_TODO = 'update_todo';
+export const ADD_TODO = 'add_todo';

@@ -8,9 +8,9 @@ const Sidebar = ({ lists }) => {
   function renderLists() {
     return lists.map((list) => {
       return (
-        <Link key={list.todo_list_id} to={`/${list.todo_list_id}`}>
-          {list.todo_list_name}
-        </Link>
+        <div className="list-container" key={list.todo_list_id}>
+          <Link to={`/${list.todo_list_id}`}>{list.todo_list_name}</Link>
+        </div>
       );
     });
   }

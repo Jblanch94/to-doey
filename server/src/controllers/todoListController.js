@@ -34,8 +34,6 @@ const fetchLists = async (req, res) => {
   //destructure user id from req.user
   const { userId } = req.user;
 
-  console.log('user-id', userId);
-
   if (!userId) {
     return res.status(403).json('Authorization Error');
   }

@@ -1,6 +1,5 @@
 import React, { Fragment, useEffect } from 'react';
 import { connect } from 'react-redux';
-import { isEqual } from 'lodash';
 
 import './ListContent.css';
 import { fetchTodos } from '../../actions';
@@ -20,7 +19,7 @@ const ListContent = ({ lists, match, fetchTodos, todos }) => {
       </div>
 
       <div className="list-content">
-        <Todos todos={todos} lists={lists} id={match.params.id} />
+        <Todos lists={lists} id={match.params.id} todos={todos} />
       </div>
     </Fragment>
   );

@@ -6,7 +6,7 @@ import './Dashboard.css';
 
 import Sidebar from '../ui-components/Sidebar/Sidebar';
 
-const Dashboard = ({ fetchLists, lists }) => {
+const Dashboard = ({ fetchLists, lists, match }) => {
   useEffect(() => {
     fetchLists();
   }, [fetchLists]);

@@ -33,5 +33,11 @@
   width: 100%;
   display: flex;
   justify-content: flex-end;
+  align-content: flex-end;
   padding-right: 10rem;
+}
+
+.todo-container {
+  display: flex;
+  align-content: flex-end;
 }

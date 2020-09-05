@@ -1,4 +1,4 @@
-import { FETCH_TODOS, UPDATE_TODO } from '../actions/types';
+import { FETCH_TODOS, UPDATE_TODO, ADD_TODO } from '../actions/types';
 
 export default function (state = [], action) {
   switch (action.type) {
@@ -15,6 +15,8 @@ export default function (state = [], action) {
         }
         return todo;
       });
+    case ADD_TODO:
+      return [].concat(state, action.payload);
     default:
       return [].concat(state);
   }

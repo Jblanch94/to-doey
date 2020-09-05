@@ -1,25 +1,26 @@
-import React, { Fragment, useState } from 'react';
+import React, { Fragment } from 'react';
 import { connect } from 'react-redux';
 import { updateTodoData } from '../../actions';
 
 import './Todos.css';
 import EditTodo from '../EditTodo/EditTodo';
 import TodoInput from '../TodoInput/TodoInput';
+import NewTodo from '../NewTodo/NewTodo';
 
 const Todo = ({ todos, lists, id, updateTodoData }) => {
   const renderTodos = () => {
     return todos.map((todo, index) => {
       return (
         <Fragment key={index}>
-          <div className="d-flex">
+          <div className="todo-container">
             <i
+              onClick={() =>
+                onClickComplete(parseInt(id), todo.todo_id, !todo.completed)
+              }
               className={
                 todo.completed
                   ? 'far fa-check-circle check-icon-completed fa-2x'
                   : 'far fa-check-circle check-icon-not-completed fa-2x'
-              }
-              onClick={() =>
-                onClickComplete(parseInt(id), todo.todo_id, !todo.completed)
               }
             ></i>
             <li key={todo.todo_id} id={todo.todo_id}>
@@ -56,6 +57,7 @@ const Todo = ({ todos, lists, id, updateTodoData }) => {
         <h1>{getListTitle()}</h1>
       </div>
       <div>
+        <NewTodo id={id} />
         <ul className="todo-list">{renderTodos()}</ul>
       </div>
     </Fragment>

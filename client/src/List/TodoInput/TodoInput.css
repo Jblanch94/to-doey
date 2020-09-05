@@ -9,3 +9,8 @@
 .input-todo:focus {
   outline: none;
 }
+
+.input-todo {
+  font-size: 2rem;
+  line-height: 1.8;
+}

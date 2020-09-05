@@ -26,18 +26,21 @@ const NewList = (props) => {
   }
 
   return (
-    <div className="new-list__container">
-      <i className="fas fa-plus" onClick={onIconClick}></i>
-      <form onSubmit={onFormSubmit}>
+    <form onSubmit={onFormSubmit} className="form-group">
+      <div className="new-list__container">
+        <i className="fas fa-plus" onClick={onIconClick}></i>
+        <label htmlFor="newList">new List</label>
         <input
           id="newList"
           name="newList"
           type="text"
+          className="form-control"
+          placeholder="Enter name of new list..."
           value={input.listName}
           onChange={onInputChange}
         />
-      </form>
-    </div>
+      </div>
+    </form>
   );
 };
 

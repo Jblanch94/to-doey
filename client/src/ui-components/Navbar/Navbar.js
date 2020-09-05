@@ -37,7 +37,6 @@ const Navbar = (props) => {
           Todoey
         </Link>
         <div className="d-flex">
-          <h1 className="text-bold mr-5 name navbar-text">Johnny</h1>
           <Link className="nav-link justify-content-end link-text mr-5" to="/">
             Home
           </Link>

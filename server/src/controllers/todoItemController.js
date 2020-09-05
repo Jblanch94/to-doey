@@ -21,7 +21,8 @@ const fetchTodos = async (req, res) => {
 
 const addNewTodo = async (req, res) => {
   //destructure body for description, completed from request body and list id from params
-  const { description, completed } = req.body;
+  const { description } = req.body;
+  let { completed } = req.body;
   const { id } = req.params;
 
   if (!description) {
@@ -65,8 +66,6 @@ const deleteTodo = async (req, res) => {
 const updateTodo = async (req, res) => {
   const { listId, todoId } = req.params;
   const { description, completed } = req.body;
-
-  console.log(completed);
 
   if (description === undefined && completed === undefined) {
     return res.send('No update values provided.');

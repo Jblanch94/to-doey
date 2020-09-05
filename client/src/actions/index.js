@@ -7,6 +7,7 @@ import {
   FETCH_LISTS,
   FETCH_TODOS,
   UPDATE_TODO,
+  ADD_TODO,
 } from './types';
 import axiosAuth from '../axios/axiosAuth';
 import axiosList from '../axios/axiosList';
@@ -153,12 +154,29 @@ export const updateTodoData = (listId, todoId, data) => {
         }
       );
 
-      console.log(data);
-      console.log(response.data);
-
       return dispatch({
         type: UPDATE_TODO,
         payload: response.data,
+      });
+    } catch (err) {
+      console.error(err.message);
+    }
+  };
+};
+
+export const addTodo = (id, formData) => {
+  return async (dispatch) => {
+    try {
+      const response = await axiosTodoItems.post(`/${id}`, formData, {
+        headers: {
+          Authorization: 'Bearer ' + sessionStorage.getItem('token'),
+        },
+      });
+      const data = response.data;
+
+      return dispatch({
+        type: ADD_TODO,
+        payload: data,
       });
     } catch (err) {
       console.error(err.message);

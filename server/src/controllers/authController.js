@@ -74,7 +74,6 @@ const authLogin = async (req, res) => {
   //query database for email provided
   try {
     const user = await getUserPasswordAndEmail(email);
-    console.log(user);
     //if email was not found return error
     if (!user.rows.length) {
       return res.status(401).send('Error, login credentials were incorrect!');
@@ -88,8 +87,6 @@ const authLogin = async (req, res) => {
     if (!validPassword) {
       return res.status(401).send('Incorrect login credentials!');
     }
-
-    console.log('userId', user.rows[0].user_id);
 
     //generate jwt token for user since credentials match
     const token = generateJwt(user.rows[0].user_id);
