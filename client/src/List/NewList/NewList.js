@@ -29,7 +29,7 @@ const NewList = (props) => {
     <form onSubmit={onFormSubmit} className="form-group">
       <div className="new-list__container">
         <i className="fas fa-plus" onClick={onIconClick}></i>
-        <label htmlFor="newList">new List</label>
+        <label htmlFor="newList"></label>
         <input
           id="newList"
           name="newList"
